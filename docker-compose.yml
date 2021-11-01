@@ -11,3 +11,17 @@ services:
     image: react-flask-app-client
     ports:
       - "3000:80"
+  postgresql:
+    image: postgres:12.5
+    volumes:
+      - ./configs/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+    ports:
+      - "5433:5432"
+  redis:
+    image: redis
+    expose:
+      - 6379
