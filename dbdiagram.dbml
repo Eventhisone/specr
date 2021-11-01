@@ -1,0 +1,27 @@
+Table racquets as R {
+  id int [pk]
+  name varchar
+  headsize int
+  num_crosses int
+  num_mains int
+  manufacturer_id int [ref: > M.id]
+  len_crosses varchar
+  len_mains varchar
+  start_cross varchar
+  start_main varchar
+  tie_cross varchar
+  tie_main varchar
+  skip_cross varchar
+  skip_main varchar
+  short_side varchar
+  long_side varchar
+  url int
+  created_at timestamp
+  last_updated_at timestamp
+}
+
+Table manufacturers as M {
+  id int [pk]
+  name varchar
+  url int
+}
