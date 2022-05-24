@@ -1,9 +1,21 @@
 FROM python:3.9
-WORKDIR /app
+WORKDIR /src
 
-COPY api/requirements.txt api/api.py api/.flaskenv ./
-RUN pip install -r ./requirements.txt
-ENV FLASK_ENV production
+RUN apt-get update && apt-get -y install gcc pkg-config libcairo2-dev python3-dev musl-dev libpq-dev locales libsdl-pango-dev
 
-EXPOSE 5000
-CMD ["gunicorn", "-b", ":5000", "api:app"]
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+
+COPY app/requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+COPY app/app app
+COPY app/app.py app/config.py ./
+ENV FLASK_ENV development
+
+#EXPOSE 5000
+#CMD ["gunicorn", "-b", ":5000", "app:app"]
+COPY ./entrypoint.sh /
+ENTRYPOINT ["sh", "/entrypoint.sh"]
