@@ -2,3 +2,15 @@
 
 A tool for finding tennis racquet stringing specifications.
 
+## API
+
+### DB
+
+Upgrade process:
+
+```bash
+ docker-compose exec api flask db revision --autogenerate --message "<meesage>"
+docker-compose exec api flask db stamp head
+docker-compose exec api flask db migrate   
+docker-compose exec api flask db upgrade
+```
