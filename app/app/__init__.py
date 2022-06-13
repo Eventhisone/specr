@@ -11,6 +11,8 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 from .routes.routes import app_routes
+from .routes.racquets import app_racquets
+from .routes.manufacturers import app_manufacturers
 
 def create_app(config_class=Config):
     app = Flask(__name__, instance_relative_config=False)
@@ -22,8 +24,10 @@ def create_app(config_class=Config):
     with app.app_context():
         # Include our Routes
         app.register_blueprint(app_routes)
+        app.register_blueprint(app_racquets)
+        app.register_blueprint(app_manufacturers)
 
         # Migration
-        #migrate = Migrate(app, db, compare_type=True)
+        # migrate = Migrate(app, db, compare_type=True)
 
         return app
