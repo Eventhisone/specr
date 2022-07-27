@@ -13,6 +13,13 @@ def get_all():
     data = manufacturers_schema.dump(posts, many=True)
     return custom_response(data, 200)
 
+@app_manufacturers.route('/api/manufacturers/info', methods=['GET'])
+def get_info():
+    """
+    Get Manufacturer Endpoint Info
+    """
+    return custom_response({"info": "Manufacturers endpoint"}, 200)
+
 def custom_response(res, status_code):
     """
     Custom Response Function

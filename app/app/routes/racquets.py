@@ -13,6 +13,13 @@ def get_all():
     data = racquets_schema.dump(posts, many=True)
     return custom_response(data, 200)
 
+@app_racquets.route('/api/racquets/info', methods=['GET'])
+def get_info():
+    """
+    Get Manufacturer Endpoint Info
+    """
+    return custom_response({"info": "Racquets endpoint"}, 200)
+
 def custom_response(res, status_code):
     """
     Custom Response Function
