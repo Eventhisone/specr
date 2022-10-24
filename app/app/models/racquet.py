@@ -91,11 +91,11 @@ class RacquetSchema(Schema):
     name = fields.Str()
     # name varchar
     # headsize int
-    headsize = fields.Str()
+    headsize = fields.Int()
     # num_crosses int
-    num_crosses = fields.Str()
+    num_crosses = fields.Int()
     # num_mains int
-    num_mains = fields.Str()
+    num_mains = fields.Int()
     # manufacturer_id int [ref: > M.id]
     # len_crosses varchar
     len_crosses = fields.Str()
