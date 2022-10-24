@@ -2,4 +2,4 @@
 
 from .racquet import Racquet
 from .manufacturer import Manufacturer
-# from .pattern_type import PatternType
+from .pattern_type import PatternType
