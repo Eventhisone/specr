@@ -21,6 +21,7 @@ class Racquet(db.Model):
     # manufacturer_id int [ref: > M.id]
     manufacturer_id = db.Column(db.Integer, db.ForeignKey(
         'manufacturers.id'), nullable=False)
+    manufacturer_full = db.relationship('Manufacturer', lazy=True)
     # len_crosses varchar
     len_crosses = db.Column(db.String)
     # len_mains varchar
@@ -45,6 +46,7 @@ class Racquet(db.Model):
     url = db.Column(db.String)
     pattern_type_id = db.Column(db.Integer, db.ForeignKey(
         'pattern_types.id'), nullable=False)
+    pattern_type_full = db.relationship('PatternType', lazy=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     last_modified = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
