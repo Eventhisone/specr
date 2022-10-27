@@ -55,6 +55,32 @@ Start the containers
 
 View the client at `localhost:3000` and view the api at `localhost:5000`
 
+### Development
+
+Python code formatting is done using a git workflow that run outside of the Docker containers.
+The tools have to be installed onto your machine until I figure out how to get that into the container.
+Installation is pretty simple:
+
+```bash
+pip install isort autoflake black pre-commit
+pre-commit install
+```
+
+After those commands have been run. When `git commit` is used the code formatting is done automatically and added to your work.
+
+You should see output like the following if successful:
+
+```shell
+specr git:(install-black) ✗ git commit -m "Whitespace"
+Remove unused variables and imports......................................Passed
+Sorting import statements................................................Passed
+Black Python code formatting.............................................Passed
+[install-black 79035c6] Whitespace
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+```
+
+If there is an error, please edit your code and try to commit again. The auto formatting will block your commit until all of the pre-commit hooks succeed.
+
 ### DB
 
 DB Upgrade process:
