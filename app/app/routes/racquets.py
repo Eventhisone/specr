@@ -2,7 +2,7 @@ from flask import Flask, request, Response, Blueprint, json
 from ..models.racquet import Racquet, RacquetSchema
 
 app_racquets = Blueprint('racquets', __name__)
-racquets_schema = RacquetSchema
+racquet_schema = RacquetSchema()
 
 @app_racquets.route('/api/racquets', methods=['GET'])
 def get_all():
@@ -10,7 +10,7 @@ def get_all():
     Get All Racquets
     """
     posts = Racquet.get_all()
-    data = racquets_schema.dump(posts, many=True)
+    data = racquet_schema.dump(posts, many=True)
     return custom_response(data, 200)
 
 @app_racquets.route('/api/racquets/info', methods=['GET'])
