@@ -60,7 +60,7 @@ View the client at `localhost:3000` and view the api at `localhost:5000`
 DB Upgrade process:
 
 ```bash
-docker-compose exec api flask db revision --autogenerate --message "<meesage>"
+docker-compose exec api flask db revision --autogenerate --message "<message>"
 docker-compose exec api flask db stamp head
 docker-compose exec api flask db migrate   
 docker-compose exec api flask db upgrade
