@@ -1,8 +1,6 @@
 from app import db
 from marshmallow import fields, Schema
 from datetime import datetime
-from .manufacturer import ManufacturerSchema
-from .pattern_type import PatternTypeSchema
 
 class Racquet(db.Model):
     """Model for tennis racquet."""
@@ -88,6 +86,11 @@ class Racquet(db.Model):
     @staticmethod
     def get_all():
         return Racquet.query.all()
+
+    @staticmethod
+    def get_by_name(racquet):
+        return Racquet.query.filter_by(racquet=racquet).first()
+
 
 class RacquetSchema(Schema):
     """

@@ -28,10 +28,15 @@ class PatternType(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-    
+
     @staticmethod
     def get_all():
         return PatternType.query.all()
+
+    @staticmethod
+    def get_one_by_name(pattern_type):
+        return PatternType.query.filter_by(pattern_type=pattern_type).first()
+
 
 class PatternTypeSchema(Schema):
     """

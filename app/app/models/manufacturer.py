@@ -29,10 +29,14 @@ class Manufacturer(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-    
+
     @staticmethod
     def get_all():
         return Manufacturer.query.all()
+
+    @staticmethod
+    def get_one_by_name(manufacturer):
+        return Manufacturer.query.filter_by(manufacturer=manufacturer).first()
 
 class ManufacturerSchema(Schema):
     """
