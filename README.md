@@ -34,6 +34,14 @@ Clone the project
   git clone git@github.com:Eventhisone/specr.git
 ```
 
+Copy the example enviroment files in `app/` and edit the files. Replace values in brackets `< >` with proper values.
+
+```bash
+cd app
+cp .env.example .env
+cp .flaskenv.example .flaskenv
+```
+
 Go to the project directory
 
 ```bash

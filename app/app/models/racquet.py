@@ -1,8 +1,6 @@
 from app import db
 from marshmallow import fields, Schema
 from datetime import datetime
-from .manufacturer import ManufacturerSchema
-from .pattern_type import PatternTypeSchema
 
 class Racquet(db.Model):
     """Model for tennis racquet."""
@@ -15,6 +13,8 @@ class Racquet(db.Model):
     # headsize int
     headsize = db.Column(db.Integer)
     # num_crosses int
+    tension_high = db.Column(db.String)
+    tension_low = db.Column(db.String)
     num_crosses = db.Column(db.Integer)
     # num_mains int
     num_mains = db.Column(db.Integer)
@@ -53,6 +53,8 @@ class Racquet(db.Model):
     def __init__(self, data):
         self.name = data.get('name')
         self.headsize = data.get('headsize')
+        self.tension_high = data.get('tension_high')
+        self.tension_low = data.get('tension_low')
         self.num_crosses = data.get('num_crosses')
         self.num_mains = data.get('num_mains')
         self.manufacturer_id = data.get('manufacturer_id')
@@ -89,6 +91,11 @@ class Racquet(db.Model):
     def get_all():
         return Racquet.query.all()
 
+    @staticmethod
+    def get_by_name(racquet):
+        return Racquet.query.filter_by(racquet=racquet).first()
+
+
 class RacquetSchema(Schema):
     """
     Racquet Schema
@@ -100,6 +107,8 @@ class RacquetSchema(Schema):
     # headsize int
     headsize = fields.Int()
     # num_crosses int
+    tension_high = fields.Str()
+    tension_low = fields.Str()
     num_crosses = fields.Int()
     # num_mains int
     num_mains = fields.Int()

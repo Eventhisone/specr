@@ -10,9 +10,8 @@ class Config(object):
     TESTING = os.environ.get('APP_TESTING')
     DEBUG = os.environ.get('APP_DEBUG')
     SECRET_KEY = os.environ.get('APP_SECRET_KEY')
-    SESSION_COOKIE_NAME = os.environ.get('ASPIRATIONS_COOKIE_NAME')
     FLASK_ENV = os.environ.get('APP_ENV')
-   
+
     # Database
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_USERNAME = os.environ.get('SQLALCHEMY_DATABASE_USER')
