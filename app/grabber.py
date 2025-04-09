@@ -55,7 +55,7 @@ def parse_url(url):
                 pattern = [0,0]
 
             data = {
-                'Racquet Name': columns[0].text,
+                'racquet_name': columns[0].text,
                 'tension_upper': tension[0],
                 'tension_lower': tension[1],
                 'length_mains': length[0],
