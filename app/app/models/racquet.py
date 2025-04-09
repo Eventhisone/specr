@@ -44,9 +44,7 @@ class Racquet(db.Model):
     long_side = db.Column(db.String)
     # url string
     url = db.Column(db.String)
-    pattern_type_id = db.Column(db.Integer, db.ForeignKey(
-        'pattern_types.id'), nullable=False)
-    pattern_type_full = db.relationship('PatternType', lazy=True)
+    #pattern_type
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     last_modified = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
@@ -69,7 +67,7 @@ class Racquet(db.Model):
         self.short_side = data.get('short_side')
         self.long_side = data.get('long_side')
         self.url = data.get('url')
-        self.pattern_type = data.get('pattern_type')
+        #self.pattern_type = data.get('pattern_type')
         self.created_at = datetime.datetime.utcnow()
         self.last_modified = datetime.datetime.utcnow()
 
@@ -136,6 +134,6 @@ class RacquetSchema(Schema):
     long_side = fields.Str()
     # url int
     url = fields.Url()
-    pattern_type_full = fields.Nested('PatternTypeSchema', only=("pattern_type",))
+    #pattern_type
     created_at = fields.DateTime(dump_only=True)
     last_modified = fields.DateTime()
