@@ -96,8 +96,16 @@ DB Upgrade process:
 ```bash
 docker-compose exec api flask db revision --autogenerate --message "<message>"
 docker-compose exec api flask db stamp head
-docker-compose exec api flask db migrate   
+docker-compose exec api flask db migrate
 docker-compose exec api flask db upgrade
+```
+
+## Data
+
+Fetching and parsing data from klipperusa.com:
+
+```bash
+docker compose exec api python grabber.py
 ```
 
 ## API Reference
